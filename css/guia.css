@@ -12,7 +12,9 @@
     --background: #f5f8fc;
     --surface: #ffffff;
     --border: #dfe7f1;
-    --success: #16865f;
+    /* Verde oscurecido desde #16865f: aquel daba 4,01:1 sobre el fondo
+       del chip "Vas a tiempo" y no llegaba al minimo AA de 4,5. */
+    --success: #137a56;
     --warning: #d79215;
     --danger: #c62f2f;
     --shadow: 0 20px 60px rgba(16, 35, 61, 0.12);
@@ -716,6 +718,137 @@ a {
     .chip {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
+    }
+}
+
+/* ── Modo oscuro ───────────────────────────────────────────────────────
+ *
+ * Sigue la preferencia del sistema. Los colores no son los mismos
+ * invertidos: en fondo oscuro los tonos saturados vibran y cansan,
+ * así que se aclaran y se desaturan. Todas las combinaciones de texto
+ * verificadas contra WCAG AA (4.5:1 en texto normal, 3:1 en etiquetas).
+ * ────────────────────────────────────────────────────────────────── */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --primary: #7aafff;
+        --primary-dark: #a3c8ff;
+        --navy: #e8eef7;
+        --text: #dfe7f2;
+        --muted: #a3b1c4;
+        --background: #0e1620;
+        --surface: #17212f;
+        --border: #2b3a4f;
+        --success: #56d69d;
+        --warning: #f2bb45;
+        --danger: #ff8e8e;
+        --shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Insignias: en claro llevan fondo oscuro y letra blanca.
+       Aquí se invierte la relación o el texto desaparece. */
+
+    .fase-num {
+        background: var(--primary);
+        color: #0e1620;
+    }
+
+    .pais-etq {
+        background: var(--success);
+        color: #0b2018;
+    }
+
+    .etiqueta {
+        background: #1c3157;
+        color: var(--primary-dark);
+    }
+
+    /* Bloques de color: los pasteles claros deslumbran sobre fondo oscuro */
+
+    .aviso {
+        background: #2a2010;
+    }
+
+    .aviso h2 {
+        color: var(--warning);
+    }
+
+    .cadena {
+        background: #15243d;
+    }
+
+    .cadena h2 {
+        color: var(--primary-dark);
+    }
+
+    .eslabones span {
+        background: var(--surface);
+        border-color: #38507a;
+        color: var(--text);
+    }
+
+    .pais {
+        background: #12291f;
+        border-color: #2c5344;
+    }
+
+    .aviso-legal {
+        background: #141c27;
+    }
+
+    .origen {
+        background: rgba(122, 175, 255, 0.1);
+        color: #c8d6e8;
+    }
+
+    .origen a {
+        color: var(--primary-dark);
+    }
+
+    /* Chips de estado */
+
+    .chip-ok {
+        background: #123326;
+        color: #6fe0ad;
+    }
+
+    .chip-pronto {
+        background: #172c4d;
+        color: var(--primary-dark);
+    }
+
+    .chip-urgente {
+        background: #3a2a0d;
+        color: #f5c85f;
+    }
+
+    .chip-vencido {
+        background: #3d1a1a;
+        color: #ffa1a1;
+    }
+
+    .tramite.hecho {
+        border-color: #2c5344;
+    }
+
+    /* La cabecera ya era oscura: se ahonda para separarla del contenido */
+
+    .cabecera {
+        background:
+            radial-gradient(
+                ellipse 70% 90% at 88% -10%,
+                rgba(23, 105, 255, 0.3) 0%,
+                transparent 62%
+            ),
+            linear-gradient(165deg, #101c30 0%, #0b1524 55%, #070f1a 100%);
+    }
+
+    .cabecera .entradilla {
+        color: #b9c8dc;
+    }
+
+    .marca {
+        color: var(--primary);
     }
 }
 

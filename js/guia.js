@@ -30,7 +30,11 @@ const TRAMITES = [
         offset: 90,
         critico: true,
         desc: "Es el cuello de botella real de todo el proceso. Las citas se agotan y no hay forma de acelerarlas. Pídela aunque todavía no tengas ni un solo papel reunido: primero la fecha, los documentos después.",
-        nota: "Bloquea absolutamente todo lo demás."
+        nota: "Bloquea absolutamente todo lo demás.",
+        paises: [{
+            nombre: "Perú",
+            texto: 'La cita no se pide en el consulado directamente, sino en línea a través de BLS: <a href="https://peru.blsspainglobal.com/Global/home/index" target="_blank" rel="noopener">peru.blsspainglobal.com</a>. Crea una cuenta y entra en <strong>«Reservar una nueva cita»</strong>.'
+        }]
     },
     {
         fase: 1,
@@ -98,8 +102,12 @@ const TRAMITES = [
         titulo: "Presentar el expediente de visado",
         offset: 55,
         critico: true,
-        desc: "Formulario nacional, pasaporte con vigencia suficiente, carta de admisión, matrícula, y todo lo anterior. Más fotos y la tasa correspondiente.",
-        nota: "Si va incompleto pierdes la cita y vuelves al final de la cola."
+        desc: "Formulario nacional, pasaporte con vigencia suficiente, carta de admisión, matrícula, y todo lo anterior. Más fotos y la tasa correspondiente. <strong>Plantéate que una agencia con experiencia en visados de estudios te revise la carpeta antes de entregarla:</strong> el formulario esconde errores que tú no vas a ver, y ellos lo corrigen y lo reimprimen. Cuesta poco comparado con perder la cita.",
+        nota: "Si va incompleto pierdes la cita y vuelves al final de la cola. Por eso una revisión previa sale barata: no estás pagando por el trámite, estás pagando por no repetirlo.",
+        paises: [{
+            nombre: "Perú",
+            texto: "Las agencias con experiencia en visados de estudios suelen cobrar alrededor de <strong>100 soles</strong> por revisar el expediente. El fallo más habitual que detectan está en el formulario que se entrega a BLS."
+        }]
     },
 
     {
@@ -108,7 +116,7 @@ const TRAMITES = [
         titulo: "Empezar a buscar alojamiento",
         offset: 50,
         critico: true,
-        desc: "Alquilar en remoto desde otro continente es donde ocurren casi todas las estafas de este proceso. Nunca pagues una fianza sin contrato firmado y sin haber verificado que el propietario existe.",
+        desc: "Alquilar en remoto desde otro continente es donde ocurren casi todas las estafas de este proceso. Nunca pagues una fianza sin contrato firmado y sin haber verificado que el propietario existe.<br><br><strong>Y no te fíes de la distancia en el mapa.</strong> Que un piso esté a 15 km de tu facultad no significa que llegues rápido: el transporte público en España da muchas vueltas para cubrir barrios, y un trayecto que parece corto se te puede ir a hora y pico. Antes de decidirte, coge Google Maps, pon la dirección del piso y pide indicaciones hasta tu centro de estudios <strong>en horario de clase</strong>. Vas a llevarte sorpresas, y es mejor llevárselas ahora que en octubre a las siete de la mañana.",
         nota: "Necesitarás un contrato a tu nombre o una autorización del propietario. Sin eso no hay empadronamiento."
     },
     {
@@ -133,7 +141,7 @@ const TRAMITES = [
         id: "viajar",
         titulo: "Viajar",
         offset: 12,
-        desc: "Lo ideal es llegar entre diez y catorce días antes del primer día de clase. Ese margen es lo que separa un primer mes tranquilo de un desastre.",
+        desc: "Lo ideal es llegar entre diez y catorce días antes del primer día de clase. Ese margen es lo que separa un primer mes tranquilo de un desastre.<br><br><strong>Y si vas solo, tranquilo.</strong> Los aeropuertos españoles están bien comunicados: hay metro y autobús hasta el centro sin necesidad de taxi ni de que nadie te recoja. Compra un billete de varios viajes nada más llegar y ve hasta la parada de metro o autobús más cercana a tu alojamiento. No necesitas resolver nada más ese primer día.",
         nota: "Todo lo que viene a continuación se cuenta desde el día que entras en España."
     },
 
@@ -178,8 +186,12 @@ const TRAMITES = [
         id: "banco-movil",
         titulo: "Cuenta bancaria y línea de móvil",
         offset: 2,
-        desc: "Algunos bancos abren cuenta de no residente solo con pasaporte; otros exigen la TIE. Un número español lo vas a necesitar para casi cualquier cita previa y para recibir SMS de verificación.",
-        nota: "Si un banco te pone pegas, prueba en otro. Las políticas varían mucho entre entidades."
+        desc: "Algunos bancos abren cuenta de no residente solo con pasaporte; otros exigen la TIE. Un número español lo vas a necesitar para casi cualquier cita previa y para recibir SMS de verificación.<br><br><strong>La línea de móvil resuélvela el primer día.</strong> Puedes comprarla en el mismo aeropuerto, o contratar una eSIM por internet antes de viajar y llegar con número español ya activo. No lo dejes para más adelante: sin un número de aquí no puedes pedir casi ninguna cita previa.",
+        nota: "Si un banco te pone pegas, prueba en otro. Las políticas varían mucho entre entidades.",
+        paises: [{
+            nombre: "Perú",
+            texto: "En BLS a veces regalan una SIM española para que la actives nada más aterrizar. Pregunta cuando vayas a tu cita: si te la dan, te ahorras la gestión del primer día."
+        }]
     },
     {
         fase: 4,
