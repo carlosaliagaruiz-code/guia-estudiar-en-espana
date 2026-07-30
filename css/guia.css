@@ -59,9 +59,34 @@ a {
 /* ── Cabecera ──────────────────────────────────────────────────────── */
 
 .cabecera {
-    background: var(--navy);
+    position: relative;
+    overflow: hidden;
+    background:
+        radial-gradient(
+            ellipse 70% 90% at 88% -10%,
+            rgba(23, 105, 255, 0.42) 0%,
+            transparent 62%
+        ),
+        linear-gradient(165deg, #16294a 0%, var(--navy) 55%, #0b1a2f 100%);
     color: #fff;
-    padding: 52px 0 44px;
+    padding: 58px 0 50px;
+}
+
+/* Retícula tenue de fondo, como el papel pautado de un calendario */
+.cabecera::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.028) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.028) 1px, transparent 1px);
+    background-size: 46px 46px;
+    pointer-events: none;
+}
+
+.cabecera .envoltorio {
+    position: relative;
+    z-index: 1;
 }
 
 .marca {
@@ -75,10 +100,11 @@ a {
 }
 
 .cabecera h1 {
-    font-size: 34px;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    margin-bottom: 14px;
+    font-size: 38px;
+    line-height: 1.15;
+    letter-spacing: -0.028em;
+    margin-bottom: 16px;
+    max-width: 15ch;
 }
 
 .cabecera .entradilla {
@@ -269,8 +295,49 @@ a {
 
 /* ── Fases y trámites ──────────────────────────────────────────────── */
 
+/* Cinta de progreso fija en el borde superior */
+
+.cinta {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: transparent;
+    z-index: 50;
+}
+
+.cinta-relleno {
+    height: 100%;
+    width: 0;
+    background: var(--success);
+    transition: width 0.3s ease;
+}
+
 .fase {
     margin: 44px 0;
+}
+
+/* Espina temporal: el hilo que une los pasos de cada fase */
+
+.fase-pasos {
+    position: relative;
+    padding-left: 30px;
+}
+
+.fase-pasos::before {
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 18px;
+    bottom: 18px;
+    width: 2px;
+    background: linear-gradient(
+        to bottom,
+        var(--border) 0%,
+        var(--border) 92%,
+        transparent 100%
+    );
 }
 
 .fase h2 {
@@ -300,6 +367,7 @@ a {
 }
 
 .tramite {
+    position: relative;
     display: flex;
     gap: 14px;
     background: var(--surface);
@@ -307,10 +375,54 @@ a {
     border-radius: 12px;
     padding: 18px 20px;
     margin-bottom: 12px;
+    transition: opacity 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hito sobre la espina */
+.tramite::before {
+    content: "";
+    position: absolute;
+    left: -27px;
+    top: 25px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2px solid var(--border);
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 .tramite.es-critico {
     border-left: 4px solid var(--primary);
+}
+
+.tramite.es-critico::before {
+    background: var(--primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px rgba(23, 105, 255, 0.14);
+}
+
+/* Paso completado */
+
+.tramite.hecho {
+    opacity: 0.55;
+    border-color: #d5e5dd;
+}
+
+.tramite.hecho::before {
+    background: var(--success);
+    border-color: var(--success);
+    box-shadow: 0 0 0 4px rgba(22, 134, 95, 0.14);
+}
+
+.tramite.hecho h3 {
+    text-decoration: line-through;
+    text-decoration-color: var(--muted);
+    text-decoration-thickness: 1.5px;
+}
+
+.tramite.hecho:hover {
+    opacity: 1;
 }
 
 .marca-zona {
@@ -570,8 +682,26 @@ a {
     .gratis,
     .acciones,
     .calculadora > p,
-    .progreso-caja {
+    .progreso-caja,
+    .cinta {
         display: none;
+    }
+
+    .cabecera::after {
+        display: none;
+    }
+
+    .fase-pasos {
+        padding-left: 0;
+    }
+
+    .fase-pasos::before,
+    .tramite::before {
+        display: none;
+    }
+
+    .tramite.hecho {
+        opacity: 1;
     }
 
     .calculadora,
@@ -597,7 +727,23 @@ a {
     }
 
     .cabecera h1 {
-        font-size: 26px;
+        font-size: 27px;
+        max-width: none;
+    }
+
+    .fase-pasos {
+        padding-left: 22px;
+    }
+
+    .fase-pasos::before {
+        left: 5px;
+    }
+
+    .tramite::before {
+        left: -23px;
+        top: 22px;
+        width: 10px;
+        height: 10px;
     }
 
     .calculadora,

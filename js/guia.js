@@ -301,11 +301,12 @@ function pintarListado() {
             <section class="fase">
                 <h2><span class="fase-num">${numero}</span> ${fase.titulo}</h2>
                 <p class="fase-desc">${fase.desc}</p>
+                <div class="fase-pasos">
         `;
 
         TRAMITES.filter((t) => String(t.fase) === numero).forEach((t) => {
             html += `
-                <article class="tramite${t.critico ? " es-critico" : ""}" id="t-${t.id}">
+                <article class="tramite${t.critico ? " es-critico" : ""}${hechos[t.id] ? " hecho" : ""}" id="t-${t.id}">
                     <label class="marca-zona">
                         <input type="checkbox" class="casilla" data-id="${t.id}"
                                ${hechos[t.id] ? "checked" : ""}>
@@ -335,7 +336,7 @@ function pintarListado() {
             `;
         });
 
-        html += "</section>";
+        html += "</div></section>";
     });
 
     listado.innerHTML = html;
@@ -343,6 +344,11 @@ function pintarListado() {
     document.querySelectorAll(".casilla").forEach((casilla) => {
         casilla.addEventListener("change", () => {
             hechos[casilla.dataset.id] = casilla.checked;
+
+            casilla
+                .closest(".tramite")
+                .classList.toggle("hecho", casilla.checked);
+
             guardarProgreso();
             actualizarProgreso();
         });
@@ -420,6 +426,11 @@ function actualizarProgreso() {
 
     barra.style.width = `${pct}%`;
     textoProgreso.textContent = `${completados} de ${total} pasos · ${pct}%`;
+
+    const cinta = document.getElementById("cintaProgreso");
+    if (cinta) {
+        cinta.style.width = `${pct}%`;
+    }
 }
 
 function leerFechaClase() {
