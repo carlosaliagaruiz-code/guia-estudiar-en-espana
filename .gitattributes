@@ -1,0 +1,12 @@
+# Normaliza los finales de línea: se guardan como LF en el repositorio
+# y se entregan en el formato nativo de cada sistema al hacer checkout.
+# Evita que Windows, Mac y Linux se peleen marcando archivos enteros
+# como modificados cuando en realidad no cambió ni una letra.
+
+* text=auto
+
+*.html text
+*.css  text
+*.js   text
+*.json text
+*.md   text
