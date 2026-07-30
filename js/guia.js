@@ -230,7 +230,7 @@ document.getElementById("limpiar").addEventListener("click", () => {
     hechos = {};
     campoFecha.value = "";
 
-    document.querySelectorAll(".marca").forEach((c) => {
+    document.querySelectorAll(".casilla").forEach((c) => {
         c.checked = false;
     });
 
@@ -258,7 +258,7 @@ function pintarListado() {
             html += `
                 <article class="tramite${t.critico ? " es-critico" : ""}" id="t-${t.id}">
                     <label class="marca-zona">
-                        <input type="checkbox" class="marca" data-id="${t.id}"
+                        <input type="checkbox" class="casilla" data-id="${t.id}"
                                ${hechos[t.id] ? "checked" : ""}>
                     </label>
 
@@ -284,7 +284,7 @@ function pintarListado() {
 
     listado.innerHTML = html;
 
-    document.querySelectorAll(".marca").forEach((casilla) => {
+    document.querySelectorAll(".casilla").forEach((casilla) => {
         casilla.addEventListener("change", () => {
             hechos[casilla.dataset.id] = casilla.checked;
             guardarProgreso();
