@@ -10,6 +10,16 @@
  * "offset" = días antes del primer día de clase en que conviene tenerlo
  * resuelto. Un offset negativo significa que cae después de empezar
  * las clases, cosa que en algunos trámites es normal y legal.
+ *
+ * "paises" es opcional y es una lista: el paso general vale para
+ * cualquiera, y dentro se cuelga el detalle concreto de cada país
+ * (organismo, enlace y plazo). Para añadir un país nuevo basta con
+ * meter otro objeto en ese array; no hay que tocar nada más.
+ *
+ *     paises: [
+ *         { nombre: "Perú",     texto: "..." },
+ *         { nombre: "Colombia", texto: "..." }
+ *     ]
  */
 
 const TRAMITES = [
@@ -33,10 +43,38 @@ const TRAMITES = [
     {
         fase: 1,
         id: "certificado-medico",
-        titulo: "Certificado médico",
-        offset: 60,
-        desc: "Debe indicar que no padeces enfermedades que puedan tener repercusión para la salud pública según el Reglamento Sanitario Internacional. Cada consulado suele exigir una redacción concreta.",
-        nota: "Pide el modelo exacto ANTES de ir al médico. Es habitual tener que repetirlo por una frase mal puesta."
+        titulo: "Sacar el certificado médico en un centro autorizado",
+        offset: 68,
+        desc: "No vale cualquier consultorio: tiene que ser un centro reconocido, y el certificado debe indicar que no padeces enfermedades que puedan tener repercusión para la salud pública según el Reglamento Sanitario Internacional. Cada consulado exige una redacción concreta y publica su propia lista de centros aceptados.",
+        nota: "Pide el modelo exacto y la lista de centros ANTES de ir al médico. Es habitual tener que repetirlo entero por una frase mal puesta.",
+        paises: [{
+            nombre: "Perú",
+            texto: "Pide en el consulado la lista vigente de centros aceptados antes de reservar cita. No te fíes de listas que circulen por foros o grupos: cambian, y un certificado emitido en un centro no reconocido no se puede arreglar después. Al reservar, pregunta ya si tramitan también el aval y la apostilla."
+        }]
+    },
+    {
+        fase: 1,
+        id: "aval-certificado-medico",
+        titulo: "Conseguir el aval del colegio médico",
+        offset: 63,
+        desc: "El certificado por sí solo no sirve. Antes de poder apostillarlo, el colegio profesional de médicos tiene que avalar que quien lo firmó es un doctor colegiado en activo. <strong>Pregunta en el mismo centro si ellos se encargan de todo:</strong> muchos ofrecen el servicio completo, aval y apostilla incluidos, y suele compensar. Pagas algo más y te quitas dos gestiones de encima.",
+        nota: "Este es el paso invisible que descuadra el calendario, porque casi nadie sabe que existe hasta que le rechazan el documento.",
+        paises: [{
+            nombre: "Perú",
+            texto: 'Aval Médico del Colegio Médico del Perú, que se puede tramitar en línea o presencialmente: <a href="https://cmp.org.pe/avalmedico/" target="_blank" rel="noopener">cmp.org.pe/avalmedico</a>. Cuenta con unos <strong>3 días</strong>.'
+        }]
+    },
+    {
+        fase: 1,
+        id: "apostillar-certificado-medico",
+        titulo: "Apostillar el certificado médico",
+        offset: 61,
+        desc: "Con el aval ya conseguido, el último paso es la apostilla de La Haya, que es lo que hace que el documento tenga validez internacional y España lo acepte. La emite el ministerio de exteriores de tu país, no el colegio médico.",
+        nota: "Ojo con las prisas por adelantarte: el certificado médico caduca, así que tampoco puedes sacarlo con demasiada antelación para ir sobrado. La ventana es más estrecha de lo que parece.",
+        paises: [{
+            nombre: "Perú",
+            texto: 'Se tramita en la plataforma de la Cancillería, <a href="http://portal.rree.gob.pe/sitepages/apostilla.aspx" target="_blank" rel="noopener">portal.rree.gob.pe</a>, o presencialmente en un centro MAC. Suele salir en <strong>1 día</strong>.'
+        }]
     },
     {
         fase: 1,
@@ -51,8 +89,8 @@ const TRAMITES = [
         id: "medios-economicos",
         titulo: "Acreditar medios económicos",
         offset: 60,
-        desc: "Hay que demostrar que puedes mantenerte durante el curso. El importe se calcula sobre el IPREM del año en curso y se acredita con extractos bancarios, carta de patrocinio o resolución de beca.",
-        nota: "Una cuenta abierta la semana pasada levanta sospechas. Cuanto más histórico tenga, mejor."
+        desc: "Aquí es donde más gente se queda corta, porque son <strong>dos cantidades que se suman</strong>, no una. <strong>1) El curso completo:</strong> lo que ya hayas pagado de matrícula cuenta y se descuenta, así que lo abonado más lo que tengas en la cuenta tiene que cubrir el precio anual entero. <strong>2) Tu manutención:</strong> se calcula sobre el IPREM del año en curso, por los meses que dure tu estancia. Se acredita con extractos bancarios, carta de patrocinio o resolución de beca.",
+        nota: "Guarda todos los justificantes de lo que ya hayas pagado a la universidad: cada euro abonado es un euro menos que tienes que tener en el banco. Y una cuenta abierta la semana pasada levanta sospechas: cuanto más histórico tenga, mejor."
     },
     {
         fase: 1,
@@ -213,8 +251,19 @@ const textoProgreso = document.getElementById("textoProgreso");
 let hechos = cargarProgreso();
 
 pintarListado();
+pintarTotales();
 restaurarFecha();
 actualizarProgreso();
+
+/*
+ * El número de pasos se escribe desde los datos, nunca a mano.
+ * Añadir o dividir un paso no puede dejar el texto desincronizado.
+ */
+function pintarTotales() {
+    document.querySelectorAll("[data-total-pasos]").forEach((el) => {
+        el.textContent = TRAMITES.length;
+    });
+}
 
 campoFecha.addEventListener("change", () => {
     guardarFecha(campoFecha.value);
@@ -270,6 +319,13 @@ function pintarListado() {
 
                         <p class="desc">${t.desc}</p>
                         <p class="nota">${t.nota}</p>
+
+                        ${(t.paises || []).map((p) => `
+                            <p class="pais">
+                                <span class="pais-etq">En ${p.nombre}</span>
+                                ${p.texto}
+                            </p>
+                        `).join("")}
 
                         <p class="fecha" data-offset="${t.offset}">
                             <span class="fecha-vacia">Introduce tu fecha de inicio arriba para ver cuándo toca</span>

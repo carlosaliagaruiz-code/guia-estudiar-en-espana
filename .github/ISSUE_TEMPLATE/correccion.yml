@@ -1,0 +1,50 @@
+name: Corregir un dato
+description: Algo de la guía dice una cosa y tú te encontraste con otra
+title: "Corrección: "
+labels: ["correccion"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Si has hecho un trámite y no coincidía con lo que pone aquí,
+        cuéntalo. Es la única forma de que la guía no envejezca mal.
+
+  - type: input
+    id: paso
+    attributes:
+      label: ¿Qué paso de la guía?
+      placeholder: Apostillar el certificado médico
+    validations:
+      required: true
+
+  - type: textarea
+    id: dice
+    attributes:
+      label: Qué dice ahora la guía
+    validations:
+      required: true
+
+  - type: textarea
+    id: realidad
+    attributes:
+      label: Qué te encontraste tú
+    validations:
+      required: true
+
+  - type: input
+    id: fuente
+    attributes:
+      label: Enlace oficial que lo respalde
+      description: Si lo tienes. Si no, no pasa nada, cuéntalo igual
+      placeholder: https://…
+    validations:
+      required: false
+
+  - type: input
+    id: cuando
+    attributes:
+      label: ¿Cuándo hiciste el trámite?
+      description: Importa, porque los requisitos cambian de un año a otro
+      placeholder: julio de 2026
+    validations:
+      required: false

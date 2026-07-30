@@ -1,0 +1,78 @@
+name: Añadir los datos de mi país
+description: Comparte los organismos y plazos de tu país para que la guía sirva a más gente
+title: "Datos de [tu país]"
+labels: ["pais"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Gracias por echar una mano. No hace falta que lo sepas todo:
+        con un solo trámite que aportes ya ayudas a alguien.
+
+        No pongas importes, por favor. Cambian cada año y un precio
+        desactualizado hace más daño que no ponerlo.
+
+  - type: input
+    id: pais
+    attributes:
+      label: ¿Desde qué país haces el trámite?
+      placeholder: Colombia
+    validations:
+      required: true
+
+  - type: dropdown
+    id: paso
+    attributes:
+      label: ¿De qué paso son los datos?
+      options:
+        - Certificado médico (centro autorizado)
+        - Aval del colegio médico
+        - Apostilla del certificado médico
+        - Antecedentes penales
+        - Apostilla de antecedentes penales
+        - Cita en el consulado
+        - Acreditar medios económicos
+        - Otro (lo explico abajo)
+    validations:
+      required: true
+
+  - type: input
+    id: organismo
+    attributes:
+      label: ¿Qué organismo lo emite?
+      placeholder: Colegio Médico de Colombia
+    validations:
+      required: true
+
+  - type: input
+    id: enlace
+    attributes:
+      label: Enlace oficial
+      description: La web del propio organismo, no un blog ni un grupo
+      placeholder: https://…
+    validations:
+      required: true
+
+  - type: input
+    id: plazo
+    attributes:
+      label: ¿Cuánto tardó?
+      placeholder: unos 3 días
+    validations:
+      required: true
+
+  - type: textarea
+    id: detalles
+    attributes:
+      label: Algo más que convenga saber
+      description: Trampas, requisitos que no son evidentes, si el centro lo tramita todo…
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: confirmacion
+    attributes:
+      label: Confirmación
+      options:
+        - label: Lo he hecho yo o me consta de primera mano, no lo he copiado de un foro
+          required: true
