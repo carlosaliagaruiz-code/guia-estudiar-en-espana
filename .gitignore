@@ -1,0 +1,28 @@
+# ─────────────────────────────────────────────────────────────
+# Este repositorio contiene SOLO la guía pública.
+# Todo lo de abajo se queda en local: sigue en tu disco, pero
+# no se publica.
+# ─────────────────────────────────────────────────────────────
+
+# Generador original en PowerShell, ya superado
+crear-studentpassport.ps1
+StudentPassport_componentes.zip
+
+# Versión comercial archivada.
+# No forma parte de la guía, y js/firebase.js lleva la
+# configuración del proyecto Firebase: fuera del repo público.
+landing-comercial.html
+css/style.css
+js/app.js
+js/firebase.js
+js/passport.js
+firestore.rules
+
+# Carpetas de trabajo vacías
+docs/
+assets/
+
+# Ruido del sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store

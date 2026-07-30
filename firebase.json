@@ -1,0 +1,28 @@
+{
+  "hosting": {
+    "public": ".",
+    "ignore": [
+      "firebase.json",
+      "firestore.rules",
+      "**/.*",
+      "**/node_modules/**",
+      "*.ps1",
+      "*.zip",
+      "landing-comercial.html",
+      "js/app.js",
+      "js/firebase.js",
+      "js/passport.js",
+      "css/style.css",
+      "docs/**"
+    ],
+    "headers": [
+      {
+        "source": "**/*.@(css|js)",
+        "headers": [
+          { "key": "Cache-Control", "value": "public, max-age=3600" }
+        ]
+      }
+    ],
+    "cleanUrls": true
+  }
+}

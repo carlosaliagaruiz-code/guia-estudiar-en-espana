@@ -1,0 +1,543 @@
+/*
+ * Guía de aterrizaje en España — hoja de estilo
+ * Reutiliza los mismos tokens de color del proyecto original.
+ */
+
+:root {
+    --primary: #1769ff;
+    --primary-dark: #0f52cc;
+    --navy: #10233d;
+    --text: #20344e;
+    --muted: #607086;
+    --background: #f5f8fc;
+    --surface: #ffffff;
+    --border: #dfe7f1;
+    --success: #16865f;
+    --warning: #d79215;
+    --danger: #c62f2f;
+    --shadow: 0 20px 60px rgba(16, 35, 61, 0.12);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-width: 320px;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+    color: var(--text);
+    background: var(--background);
+    line-height: 1.6;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+a {
+    color: var(--primary);
+}
+
+.envoltorio {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ── Cabecera ──────────────────────────────────────────────────────── */
+
+.cabecera {
+    background: var(--navy);
+    color: #fff;
+    padding: 52px 0 44px;
+}
+
+.marca {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #7fb0ff;
+    margin-bottom: 14px;
+}
+
+.cabecera h1 {
+    font-size: 34px;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+}
+
+.cabecera .entradilla {
+    font-size: 17px;
+    color: #c3d2e6;
+    max-width: 620px;
+}
+
+.gratis {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 22px;
+    padding: 8px 16px;
+    border-radius: 999px;
+    background: rgba(127, 176, 255, 0.14);
+    border: 1px solid rgba(127, 176, 255, 0.3);
+    color: #dce8f8;
+    font-size: 13.5px;
+}
+
+/* ── Aviso de agosto ───────────────────────────────────────────────── */
+
+.aviso {
+    margin: 34px 0;
+    padding: 18px 22px;
+    border-left: 4px solid var(--warning);
+    border-radius: 0 10px 10px 0;
+    background: #fff8ec;
+}
+
+.aviso h2 {
+    font-size: 16px;
+    color: #8a5d0a;
+    margin-bottom: 6px;
+}
+
+.aviso p {
+    font-size: 15px;
+}
+
+/* ── Cadena crítica ────────────────────────────────────────────────── */
+
+.cadena {
+    margin: 34px 0;
+    padding: 20px 22px;
+    border-left: 4px solid var(--primary);
+    border-radius: 0 10px 10px 0;
+    background: #eef4ff;
+}
+
+.cadena h2 {
+    font-size: 16px;
+    color: var(--primary-dark);
+    margin-bottom: 10px;
+}
+
+.cadena p {
+    font-size: 15px;
+}
+
+.eslabones {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    margin: 14px 0;
+}
+
+.eslabones span {
+    background: #fff;
+    border: 1px solid #cbdcff;
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.eslabones i {
+    color: var(--primary);
+    font-style: normal;
+    font-weight: 700;
+}
+
+/* ── Calculadora ───────────────────────────────────────────────────── */
+
+.calculadora {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px;
+    margin: 34px 0;
+    box-shadow: var(--shadow);
+}
+
+.calculadora h2 {
+    font-size: 19px;
+    margin-bottom: 6px;
+}
+
+.calculadora > p {
+    font-size: 14.5px;
+    color: var(--muted);
+    margin-bottom: 18px;
+}
+
+.campo-fecha {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: flex-end;
+}
+
+.campo-fecha label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.campo-fecha input {
+    padding: 11px 14px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--background);
+    color: var(--text);
+}
+
+.campo-fecha input:focus {
+    outline: 2px solid var(--primary);
+    outline-offset: 1px;
+}
+
+.acciones {
+    display: flex;
+    gap: 8px;
+    margin-left: auto;
+}
+
+.acciones button {
+    padding: 11px 16px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--surface);
+    color: var(--text);
+    font-size: 14px;
+}
+
+.acciones button:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+#resumen {
+    margin-top: 18px;
+    padding: 13px 16px;
+    border-radius: 9px;
+    background: var(--background);
+    font-size: 15px;
+}
+
+.progreso-caja {
+    margin-top: 18px;
+}
+
+.progreso-pista {
+    height: 8px;
+    border-radius: 99px;
+    background: var(--border);
+    overflow: hidden;
+}
+
+.progreso-relleno {
+    height: 100%;
+    width: 0;
+    border-radius: 99px;
+    background: var(--success);
+    transition: width 0.25s ease;
+}
+
+#textoProgreso {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: var(--muted);
+}
+
+/* ── Fases y trámites ──────────────────────────────────────────────── */
+
+.fase {
+    margin: 44px 0;
+}
+
+.fase h2 {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+}
+
+.fase-num {
+    flex: 0 0 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 8px;
+    background: var(--navy);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.fase-desc {
+    color: var(--muted);
+    font-size: 14.5px;
+    margin: 8px 0 18px 42px;
+}
+
+.tramite {
+    display: flex;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+}
+
+.tramite.es-critico {
+    border-left: 4px solid var(--primary);
+}
+
+.marca-zona {
+    flex: 0 0 auto;
+    padding-top: 3px;
+    cursor: pointer;
+}
+
+.marca-zona input {
+    width: 20px;
+    height: 20px;
+    accent-color: var(--success);
+    cursor: pointer;
+}
+
+.cuerpo {
+    flex: 1;
+    min-width: 0;
+}
+
+.tramite h3 {
+    font-size: 16.5px;
+    margin-bottom: 7px;
+}
+
+.etiqueta {
+    display: inline-block;
+    vertical-align: 2px;
+    margin-left: 8px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #e6efff;
+    color: var(--primary-dark);
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.tramite .desc {
+    font-size: 14.5px;
+    margin-bottom: 8px;
+}
+
+.tramite .nota {
+    font-size: 13.5px;
+    color: var(--muted);
+    padding-left: 11px;
+    border-left: 2px solid var(--border);
+    margin-bottom: 10px;
+}
+
+.fecha {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    font-size: 13.5px;
+}
+
+.fecha-vacia {
+    color: var(--muted);
+    font-style: italic;
+}
+
+.fecha-valor {
+    font-weight: 600;
+    color: var(--navy);
+}
+
+.chip {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 5px;
+    font-size: 11.5px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+
+.chip-ok {
+    background: #e4f4ed;
+    color: var(--success);
+}
+
+.chip-pronto {
+    background: #e6efff;
+    color: var(--primary-dark);
+}
+
+.chip-urgente {
+    background: #fdf0dc;
+    color: #8a5d0a;
+}
+
+.chip-vencido {
+    background: #fce8e8;
+    color: var(--danger);
+}
+
+/* ── Fuentes oficiales y cierre ────────────────────────────────────── */
+
+.bloque {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px;
+    margin: 34px 0;
+}
+
+.bloque h2 {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.bloque p {
+    font-size: 14.5px;
+    margin-bottom: 12px;
+}
+
+.bloque ul {
+    padding-left: 20px;
+    font-size: 14.5px;
+}
+
+.bloque li {
+    margin-bottom: 9px;
+}
+
+.aviso-legal {
+    border-left: 4px solid var(--muted);
+    background: #f1f4f8;
+    border-radius: 0 10px 10px 0;
+    padding: 18px 22px;
+    margin: 34px 0;
+    font-size: 13.5px;
+    color: var(--muted);
+}
+
+.aviso-legal strong {
+    color: var(--text);
+}
+
+.pie {
+    padding: 34px 0 60px;
+    text-align: center;
+    font-size: 13.5px;
+    color: var(--muted);
+}
+
+.pie p {
+    margin-bottom: 6px;
+}
+
+/* ── Impresión ─────────────────────────────────────────────────────── */
+
+@media print {
+    body {
+        background: #fff;
+        font-size: 11pt;
+    }
+
+    .cabecera {
+        background: #fff;
+        color: #000;
+        padding: 0 0 18px;
+        border-bottom: 3px solid #000;
+    }
+
+    .cabecera h1,
+    .cabecera .entradilla,
+    .marca {
+        color: #000;
+    }
+
+    .gratis,
+    .acciones,
+    .calculadora > p,
+    .progreso-caja {
+        display: none;
+    }
+
+    .calculadora,
+    .bloque,
+    .tramite {
+        box-shadow: none;
+        break-inside: avoid;
+    }
+
+    .aviso,
+    .cadena,
+    .chip {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+}
+
+/* ── Móvil ─────────────────────────────────────────────────────────── */
+
+@media (max-width: 620px) {
+    .cabecera {
+        padding: 38px 0 32px;
+    }
+
+    .cabecera h1 {
+        font-size: 26px;
+    }
+
+    .calculadora,
+    .bloque {
+        padding: 20px;
+    }
+
+    .acciones {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .acciones button {
+        flex: 1;
+    }
+
+    .fase-desc {
+        margin-left: 0;
+    }
+
+    .tramite {
+        padding: 16px;
+    }
+}
