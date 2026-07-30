@@ -76,8 +76,24 @@ function pruebas(P, fondos, esOscuro) {
         ["Pregunta destacada",           fondos.preguntaTexto, fondos.pregunta, 4.5],
         ["Aviso legal",                  P.muted,         fondos.legal,  4.5],
 
+        ["Paso hecho: cuerpo",           P.text,          fondos.hecho,  4.5],
+        ["Paso hecho: titulo",           P.muted,         fondos.hecho,  4.5],
+
         ["Barra de progreso (interfaz)", P.success,       P.border,      3.0]
     ];
+}
+
+/*
+ * Mezcla un color con su fondo para simular una capa de opacidad.
+ * Sin esto la medicion enganaba: una tarjeta atenuada con opacity
+ * declara colores que cumplen y aun asi se lee mal en pantalla.
+ */
+function conOpacidad(fg, bg, alfa) {
+    const canal = (h, i) => parseInt(h.slice(1 + i * 2, 3 + i * 2), 16);
+    const mezclado = [0, 1, 2].map((i) =>
+        Math.round(alfa * canal(fg, i) + (1 - alfa) * canal(bg, i))
+    );
+    return "#" + mezclado.map((n) => n.toString(16).padStart(2, "0")).join("");
 }
 
 const fondosClaro = {
@@ -91,6 +107,7 @@ const fondosClaro = {
     aviso: "#fff8ec",    avisoTitulo: "#8a5d0a",
     cadena: "#eef4ff",
     pregunta: "#eef4ff", preguntaTexto: claro.navy,
+    hecho: "#fafdfb",
     legal: "#f1f4f8"
 };
 
@@ -105,6 +122,7 @@ const fondosOscuro = {
     aviso: "#2a2010",    avisoTitulo: oscuro.warning,
     cadena: "#15243d",
     pregunta: "#15243d", preguntaTexto: oscuro.text,
+    hecho: "#16231d",
     legal: "#141c27"
 };
 
@@ -128,11 +146,56 @@ function tanda(titulo, lista) {
     });
 }
 
+/*
+ * Guarda contra la regresion que motivo todo esto.
+ *
+ * Atenuar una tarjeta con opacity deja unos colores declarados que
+ * cumplen y un resultado en pantalla que no: la primera version usaba
+ * opacity 0.55 en los pasos completados y el cuerpo quedaba en 3,28:1
+ * sobre blanco, obligando a pasar el raton por encima para leerlo.
+ *
+ * Si alguien vuelve a poner opacidad sobre un contenedor de texto,
+ * esto lo calcula de verdad y falla.
+ */
+function guardaOpacidad() {
+    const reglas = [...CSS.matchAll(/(\.tramite[^{]*)\{([^}]*)\}/g)];
+    const sospechosas = [];
+
+    reglas.forEach(([, selector, cuerpo]) => {
+        const m = cuerpo.match(/(?:^|[\s;])opacity:\s*([\d.]+)/);
+        if (m && parseFloat(m[1]) < 1) {
+            sospechosas.push([selector.trim(), parseFloat(m[1])]);
+        }
+    });
+
+    if (sospechosas.length === 0) {
+        console.log("\nGuarda de opacidad: ningun contenedor de texto atenuado.");
+        return;
+    }
+
+    console.log("\nGuarda de opacidad:");
+
+    sospechosas.forEach(([selector, alfa]) => {
+        [["claro", claro, fondosClaro], ["oscuro", oscuro, fondosOscuro]]
+            .forEach(([nombre, P, fondos]) => {
+                const real = conOpacidad(P.text, fondos.hecho, alfa);
+                const r = ratio(real, fondos.hecho);
+                const ok = r >= 4.5;
+                if (!ok) fallos++;
+                console.log(
+                    `  ${selector} @ ${alfa} en ${nombre} -> ${real} = ` +
+                    `${r.toFixed(2)}:1  ${ok ? "OK" : "FALLA"}`
+                );
+            });
+    });
+}
+
 const listaClaro = pruebas(claro, fondosClaro, false);
 const listaOscuro = pruebas(oscuro, fondosOscuro, true);
 
 tanda("=== MODO CLARO ===", listaClaro);
 tanda("=== MODO OSCURO ===", listaOscuro);
+guardaOpacidad();
 
 const total = listaClaro.length + listaOscuro.length;
 console.log("-".repeat(64));

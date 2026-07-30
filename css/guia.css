@@ -384,7 +384,7 @@ a {
     border-radius: 12px;
     padding: 18px 20px;
     margin-bottom: 12px;
-    transition: opacity 0.2s ease, border-color 0.2s ease;
+    transition: background 0.2s ease, border-color 0.2s ease;
 }
 
 /* Hito sobre la espina */
@@ -411,27 +411,30 @@ a {
     box-shadow: 0 0 0 4px rgba(23, 105, 255, 0.14);
 }
 
-/* Paso completado */
+/* Paso completado.
+ *
+ * Sin opacidad: atenuar la tarjeta entera dejaba el texto en 3,28:1
+ * sobre blanco, por debajo del minimo AA, y obligaba a pasar el raton
+ * por encima para poder leerlo. Se senala con el hito, el tachado del
+ * titulo y un fondo levisimo, dejando el cuerpo a plena legibilidad.
+ */
 
 .tramite.hecho {
-    opacity: 0.55;
-    border-color: #d5e5dd;
+    border-color: #cfe6dc;
+    background: #fafdfb;
 }
 
 .tramite.hecho::before {
     background: var(--success);
     border-color: var(--success);
-    box-shadow: 0 0 0 4px rgba(22, 134, 95, 0.14);
+    box-shadow: 0 0 0 4px rgba(19, 122, 86, 0.16);
 }
 
 .tramite.hecho h3 {
+    color: var(--muted);
     text-decoration: line-through;
-    text-decoration-color: var(--muted);
+    text-decoration-color: #9fb5aa;
     text-decoration-thickness: 1.5px;
-}
-
-.tramite.hecho:hover {
-    opacity: 1;
 }
 
 .marca-zona {
@@ -722,10 +725,6 @@ a {
         display: none;
     }
 
-    .tramite.hecho {
-        opacity: 1;
-    }
-
     .calculadora,
     .bloque,
     .tramite {
@@ -854,6 +853,11 @@ a {
 
     .tramite.hecho {
         border-color: #2c5344;
+        background: #16231d;
+    }
+
+    .tramite.hecho h3 {
+        text-decoration-color: #6f8c80;
     }
 
     /* La cabecera ya era oscura: se ahonda para separarla del contenido */
