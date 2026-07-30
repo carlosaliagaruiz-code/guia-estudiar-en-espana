@@ -73,6 +73,7 @@ function pruebas(P, fondos, esOscuro) {
         ["Titulo del aviso",             fondos.avisoTitulo, fondos.aviso, 4.5],
         ["Cadena critica",               P.text,          fondos.cadena, 4.5],
         ["Titulo cadena critica",        P["primary-dark"], fondos.cadena, 4.5],
+        ["Pregunta destacada",           fondos.preguntaTexto, fondos.pregunta, 4.5],
         ["Aviso legal",                  P.muted,         fondos.legal,  4.5],
 
         ["Barra de progreso (interfaz)", P.success,       P.border,      3.0]
@@ -89,6 +90,7 @@ const fondosClaro = {
     etiqueta: "#e6efff",
     aviso: "#fff8ec",    avisoTitulo: "#8a5d0a",
     cadena: "#eef4ff",
+    pregunta: "#eef4ff", preguntaTexto: claro.navy,
     legal: "#f1f4f8"
 };
 
@@ -102,6 +104,7 @@ const fondosOscuro = {
     etiqueta: "#1c3157",
     aviso: "#2a2010",    avisoTitulo: oscuro.warning,
     cadena: "#15243d",
+    pregunta: "#15243d", preguntaTexto: oscuro.text,
     legal: "#141c27"
 };
 

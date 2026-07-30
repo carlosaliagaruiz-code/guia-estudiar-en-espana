@@ -66,10 +66,10 @@ const TRAMITES = [
         titulo: "Sacar el certificado médico en un centro autorizado",
         offset: 68,
         desc: "No vale cualquier consultorio: tiene que ser un centro reconocido, y el certificado debe indicar que no padeces enfermedades que puedan tener repercusión para la salud pública según el Reglamento Sanitario Internacional. Cada consulado exige una redacción concreta y publica su propia lista de centros aceptados.",
-        nota: "Pide el modelo exacto y la lista de centros ANTES de ir al médico. Es habitual tener que repetirlo entero por una frase mal puesta.",
+        nota: "Pide el modelo exacto y la lista de centros ANTES de ir al médico. Es habitual tener que repetirlo entero por una frase mal puesta. Y recuerda cuál es el único criterio: la salud pública. Si durante la revisión te encuentran algo que no tiene nada que ver con eso y te ofrecen un tratamiento para «levantar la observación», pregunta directamente si eso hace que el certificado salga negativo.",
         paises: [{
             nombre: "Perú",
-            texto: "Pide en el consulado la lista vigente de centros aceptados antes de reservar cita. No te fíes de listas que circulen por foros o grupos: cambian, y un certificado emitido en un centro no reconocido no se puede arreglar después. Al reservar, pregunta ya si tramitan también el aval y la apostilla."
+            texto: "Pide en el consulado la lista vigente de centros aceptados antes de reservar cita. No te fíes de listas que circulen por foros o grupos: cambian, y un certificado emitido en un centro no reconocido no se puede arreglar después. Al reservar, pregunta ya si tramitan también el aval y la apostilla.<br><br><strong>Ojo con las ventas dentro del propio examen.</strong> Es conocido el caso del odontólogo que detecta caries y ofrece un paquete de profilaxis de unos 150 soles para «levantar la observación». Una caries no tiene ninguna relación con el Reglamento Sanitario Internacional. Al preguntarle directamente si eso haría salir negativo el certificado, la respuesta fue que no lo sabía, que dependía del médico del final. Se puede declinar y seguir con el examen sin ningún problema."
         }]
     },
     {

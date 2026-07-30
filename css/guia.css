@@ -638,6 +638,19 @@ a {
     font-size: 14.5px;
 }
 
+/* La pregunta que desmonta una venta */
+.pregunta {
+    margin: 4px 0 14px;
+    padding: 16px 20px;
+    border-left: 4px solid var(--primary);
+    border-radius: 0 10px 10px 0;
+    background: #eef4ff;
+    color: var(--navy);
+    font-size: 17px;
+    font-weight: 600;
+    font-style: italic;
+}
+
 .bloque li {
     margin-bottom: 9px;
 }
@@ -786,6 +799,11 @@ a {
 
     .cadena h2 {
         color: var(--primary-dark);
+    }
+
+    .pregunta {
+        background: #15243d;
+        color: var(--text);
     }
 
     .eslabones span {
