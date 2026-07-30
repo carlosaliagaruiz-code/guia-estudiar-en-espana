@@ -427,6 +427,23 @@ a {
     color: var(--muted);
 }
 
+.vias {
+    display: grid;
+    gap: 10px;
+}
+
+.via {
+    padding: 12px 15px;
+    border: 1px solid var(--border);
+    border-radius: 9px;
+    background: var(--background);
+    font-size: 14.5px;
+}
+
+.via strong {
+    color: var(--navy);
+}
+
 .fecha {
     display: flex;
     flex-wrap: wrap;

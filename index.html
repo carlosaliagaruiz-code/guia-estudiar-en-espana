@@ -228,13 +228,21 @@
             detrás.
         </p>
 
-        <p>
-            <a
-                href="https://github.com/carlosaliagaruiz-code/guia-estudiar-en-espana/issues/new/choose"
-                target="_blank"
-                rel="noopener"
-            >Añadir los datos de mi país</a>
-            — o por correo, si te resulta más cómodo.
+        <p class="vias">
+            <span class="via">
+                <strong>Por correo</strong> — sin cuentas ni registros:
+                <span data-correo></span>
+            </span>
+
+            <span class="via">
+                <strong>O por GitHub</strong>, si ya tienes cuenta (hace falta
+                una para abrirlo):
+                <a
+                    href="https://github.com/carlosaliagaruiz-code/guia-estudiar-en-espana/issues/new/choose"
+                    target="_blank"
+                    rel="noopener"
+                >rellenar el formulario</a>
+            </span>
         </p>
     </section>
 
@@ -271,9 +279,13 @@
         const u = "caliagar";
         const d = "hotmail.com";
         const destino = u + "@" + d;
+        const enlace = '<a href="mailto:' + destino + '">' + destino + "</a>";
 
-        document.getElementById("contacto").innerHTML =
-            '<a href="mailto:' + destino + '">' + destino + "</a>";
+        document.getElementById("contacto").innerHTML = enlace;
+
+        document.querySelectorAll("[data-correo]").forEach(function (el) {
+            el.innerHTML = enlace;
+        });
 
         document.getElementById("revision").textContent =
             "Última revisión: julio de 2026";
