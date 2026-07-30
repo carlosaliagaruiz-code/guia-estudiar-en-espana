@@ -230,8 +230,9 @@
 
         <p class="vias">
             <span class="via">
-                <strong>Por correo</strong> — sin cuentas ni registros:
-                <span data-correo></span>
+                <strong>Por correo</strong> — sin cuentas ni registros.
+                <a href="#" id="correoPlantilla">Escribir con la plantilla ya puesta</a>,
+                o a secas a <span data-correo></span>
             </span>
 
             <span class="via">
@@ -286,6 +287,35 @@
         document.querySelectorAll("[data-correo]").forEach(function (el) {
             el.innerHTML = enlace;
         });
+
+        /*
+         * Correo con la plantilla ya escrita: da la misma informacion
+         * estructurada que el formulario de GitHub, pero sin exigir cuenta.
+         */
+        const plantilla = [
+            "Hola, aporto datos de mi pais para la guia.",
+            "",
+            "Pais:",
+            "Paso de la guia (por ejemplo: apostillar el certificado medico):",
+            "Organismo que lo emite:",
+            "Enlace oficial:",
+            "Cuanto tardo:",
+            "",
+            "Algo mas que convenga saber (trampas, requisitos poco evidentes,",
+            "si el centro lo tramita todo de una vez...):",
+            "",
+            "",
+            "Lo hice yo o me consta de primera mano: si / no",
+            ""
+        ].join("\n");
+
+        const boton = document.getElementById("correoPlantilla");
+
+        if (boton) {
+            boton.href = "mailto:" + destino +
+                "?subject=" + encodeURIComponent("Datos de mi pais para la guia") +
+                "&body=" + encodeURIComponent(plantilla);
+        }
 
         document.getElementById("revision").textContent =
             "Última revisión: julio de 2026";
