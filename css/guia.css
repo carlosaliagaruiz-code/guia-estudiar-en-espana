@@ -106,7 +106,14 @@ a {
     line-height: 1.15;
     letter-spacing: -0.028em;
     margin-bottom: 16px;
-    max-width: 15ch;
+    max-width: 16ch;
+}
+
+/* El gancho del titular. Va en color en lugar de en mayusculas:
+   a este tamano las versales cansan y se leen peor. */
+.gancho {
+    display: block;
+    color: #8fbcff;
 }
 
 .cabecera .entradilla {
