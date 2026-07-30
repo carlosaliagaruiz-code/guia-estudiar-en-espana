@@ -39,10 +39,26 @@ const TRAMITES = [
     {
         fase: 1,
         id: "antecedentes",
-        titulo: "Certificado de antecedentes penales + apostilla",
-        offset: 75,
-        desc: "Son dos trámites, no uno. Primero lo emite la autoridad de tu país y después hay que apostillarlo por el Convenio de La Haya, normalmente en otra oficina distinta.",
-        nota: "Es el documento que más viajes retrasa. Tiene caducidad: no lo saques con demasiada antelación."
+        titulo: "Sacar el certificado de antecedentes penales",
+        offset: 78,
+        desc: "Lo emite la autoridad judicial o policial de tu país. El plazo cambia muchísimo de un país a otro: en algunos sale al instante desde una web y en otros hay que pedir cita e ir en persona. Averigua cuál es tu caso cuanto antes, porque la diferencia entre uno y otro son semanas.",
+        nota: "Tiene fecha de caducidad, así que tampoco te adelantes de más: si lo sacas demasiado pronto puede llegar caducado al día de la cita.",
+        paises: [{
+            nombre: "Perú",
+            texto: 'Se solicita en línea y sale <strong>al instante</strong>: <a href="https://www.gob.pe/326-antecedentes-penales" target="_blank" rel="noopener">gob.pe/326-antecedentes-penales</a>. Antes hay que pagar la tasa en <a href="https://pagalo.pe" target="_blank" rel="noopener">pagalo.pe</a> con el código de trámite <strong>03670</strong>.'
+        }]
+    },
+    {
+        fase: 1,
+        id: "apostillar-antecedentes",
+        titulo: "Apostillar los antecedentes penales",
+        offset: 74,
+        desc: "Igual que con el certificado médico: el documento por sí solo no vale fuera de tu país. Necesita la apostilla de La Haya, que emite el ministerio de exteriores, no quien expidió el certificado.",
+        nota: "Aquí es donde se va el tiempo de verdad. La emisión puede ser instantánea y aun así la apostilla llevarte días.",
+        paises: [{
+            nombre: "Perú",
+            texto: 'Misma vía que la del certificado médico: en línea por <a href="http://portal.rree.gob.pe/sitepages/apostilla.aspx" target="_blank" rel="noopener">portal.rree.gob.pe</a>, o presencialmente en un <strong>centro MAC</strong> de los que hay en muchos centros comerciales. Si tienes varios documentos por apostillar, llévalos juntos en el mismo viaje.'
+        }]
     },
     {
         fase: 1,
@@ -77,7 +93,7 @@ const TRAMITES = [
         nota: "Ojo con las prisas por adelantarte: el certificado médico caduca, así que tampoco puedes sacarlo con demasiada antelación para ir sobrado. La ventana es más estrecha de lo que parece.",
         paises: [{
             nombre: "Perú",
-            texto: 'Se tramita en la plataforma de la Cancillería, <a href="http://portal.rree.gob.pe/sitepages/apostilla.aspx" target="_blank" rel="noopener">portal.rree.gob.pe</a>, o presencialmente en un centro MAC. Suele salir en <strong>1 día</strong>.'
+            texto: 'Dos vías: en línea por la plataforma del Ministerio de Relaciones Exteriores, <a href="http://portal.rree.gob.pe/sitepages/apostilla.aspx" target="_blank" rel="noopener">portal.rree.gob.pe</a>, o presencialmente en un <strong>centro MAC</strong>. Los MAC están repartidos por muchos centros comerciales, así que no hace falta desplazarse hasta el ministerio. Suele salir en <strong>1 día</strong>.'
         }]
     },
     {
@@ -106,7 +122,7 @@ const TRAMITES = [
         nota: "Si va incompleto pierdes la cita y vuelves al final de la cola. Por eso una revisión previa sale barata: no estás pagando por el trámite, estás pagando por no repetirlo.",
         paises: [{
             nombre: "Perú",
-            texto: "Las agencias con experiencia en visados de estudios suelen cobrar alrededor de <strong>100 soles</strong> por revisar el expediente. El fallo más habitual que detectan está en el formulario que se entrega a BLS."
+            texto: "Las agencias con experiencia en visados de estudios suelen cobrar alrededor de <strong>100 soles</strong> por revisar el expediente. El fallo más habitual que detectan está en el formulario que se entrega a BLS.<br><br><strong>El día de la cita, lleva efectivo.</strong> En BLS se paga en metálico, así que ve con margen de sobra: unos 600 soles cubrieron el trámite en 2026. Y revisa la factura antes de pagar: es habitual que te añadan servicios adicionales que no necesitas. La foto sí suele hacer falta; el resto de extras que te ofrezcan los puedes rechazar sin problema."
         }]
     },
 
