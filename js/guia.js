@@ -122,7 +122,7 @@ const TRAMITES = [
         nota: "Si va incompleto pierdes la cita y vuelves al final de la cola. Por eso una revisión previa sale barata: no estás pagando por el trámite, estás pagando por no repetirlo.",
         paises: [{
             nombre: "Perú",
-            texto: "Las agencias con experiencia en visados de estudios suelen cobrar alrededor de <strong>100 soles</strong> por revisar el expediente. El fallo más habitual que detectan está en el formulario que se entrega a BLS.<br><br><strong>El día de la cita, lleva efectivo.</strong> En BLS se paga en metálico, así que ve con margen de sobra: unos 600 soles cubrieron el trámite en 2026. Y revisa la factura antes de pagar: es habitual que te añadan servicios adicionales que no necesitas. La foto sí suele hacer falta; el resto de extras que te ofrezcan los puedes rechazar sin problema."
+            texto: "Las agencias con experiencia en visados de estudios suelen cobrar alrededor de <strong>100 soles</strong> por revisar el expediente. El fallo más habitual que detectan está en el formulario que se entrega a BLS.<br><br><strong>El día de la cita, lleva efectivo y lleva sencillo.</strong> En BLS se paga en metálico, así que ve con margen de sobra: unos 600 soles cubrieron el trámite en 2026. Y no lleves solo billetes grandes. Por faltarte un sol puedes acabar bajando a la calle a buscar cambio y volviendo a subir, con la cola y el tiempo que eso supone.<br><br>Revisa además la factura antes de pagar: es habitual que te añadan servicios adicionales que no necesitas. La foto sí suele hacer falta; el resto de extras que te ofrezcan los puedes rechazar sin problema."
         }]
     },
 
