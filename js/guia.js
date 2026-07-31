@@ -167,7 +167,7 @@ const TRAMITES = [
         titulo: "Pedir cita previa para la TIE",
         offset: 11,
         critico: true,
-        desc: "Lo más importante de toda la lista, y casi nadie lo sabe: la cita se pide ANTES de tener los papeles listos, porque las citas van a semanas de distancia. Si esperas a tener el empadronamiento, te sales del plazo legal.",
+        desc: "Lo más importante de toda la lista, y casi nadie lo sabe: la cita se pide ANTES de tener los papeles listos, porque las citas van a semanas de distancia. Si esperas a tener el empadronamiento, te sales del plazo legal.<br><br>La cita se pide en la <strong>provincia donde te has empadronado</strong>, pero <strong>vale cualquier comisaría de Policía Nacional de esa provincia</strong>, no solo la de tu municipio. Ahí está el truco: si en la capital no queda ni un hueco, mira las comisarías de los municipios de alrededor. Suelen tener mucha menos demanda y te ahorras semanas de espera por un trayecto de media hora.",
         nota: "Plazo legal: un mes desde tu entrada. Aplica si tu estancia supera los seis meses."
     },
     {
